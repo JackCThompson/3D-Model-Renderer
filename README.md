@@ -8,7 +8,7 @@ Controls:
   Space and shift keys to move up and down respectively
   Escape key to close the program
   
-Instructions for creating custom models and loading them into the program can be found in the README files in /res/models and /src
+Instructions for creating custom models and loading them into the program can be found in the README files in /3DRendering/res/models/ and /3DRendering/src/com/weebly/jackthompsonjava/render3D/
   
 WARNING: The program takes control of the mouse even if you minimize the window. Ending the program with the escape key is the only way to regain control
 
