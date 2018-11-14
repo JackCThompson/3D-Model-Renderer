@@ -22,6 +22,9 @@ public class Camera {
 	private Handler handler;
 	
 	private double speed;
+	private double sensitivity;
+	
+	private final boolean USE_MOUSE = false;;
 	
 	public Camera(double x, double y, double z, Handler handler) {
 		this.handler = handler;
@@ -36,11 +39,18 @@ public class Camera {
 		setFovX(1.22);
 		
 		speed = 0.4;
+		sensitivity = 18;
 		
 	}
 	
 	public void tick() {
-		Point p = handler.getMouseHandler().getMove();
+		Point p;
+		
+		if (USE_MOUSE) {
+			p = handler.getMouseHandler().getMove();
+		} else {
+			p = rotateWithKeys();
+		}
 		
 		setAngleX(getAngleX() - p.getY() * 0.0005);
 		setAngleY(getAngleY() + p.getX() * 0.0005);
@@ -107,6 +117,29 @@ public class Camera {
 			angleY += 6.28;
 		}
 		
+	}
+	
+	private Point rotateWithKeys() {
+		double xMove = 0;
+		double yMove = 0;
+		
+		if (handler.getKeyHandler().i) {
+			yMove += sensitivity;
+		}
+		
+		if (handler.getKeyHandler().k) {
+			yMove -= sensitivity;
+		}
+		
+		if (handler.getKeyHandler().j) {
+			xMove -= sensitivity;
+		}
+		
+		if (handler.getKeyHandler().l) {
+			xMove += sensitivity;
+		}
+		
+		return new Point((int) xMove, (int) yMove);
 	}
 	
 	public double getFovX() {

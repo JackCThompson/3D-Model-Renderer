@@ -14,6 +14,11 @@ public class KeyHandler implements KeyListener{
 	public boolean s;
 	public boolean d;
 	
+	public boolean i;
+	public boolean j;
+	public boolean k;
+	public boolean l;
+	
 	public boolean shift;
 	public boolean space;
 	
@@ -45,6 +50,11 @@ public class KeyHandler implements KeyListener{
 		a = keys[KeyEvent.VK_A];
 		s = keys[KeyEvent.VK_S];
 		d = keys[KeyEvent.VK_D];
+
+		i = keys[KeyEvent.VK_I];
+		j = keys[KeyEvent.VK_J];
+		k = keys[KeyEvent.VK_K];
+		l = keys[KeyEvent.VK_L];
 
 		space = keys[KeyEvent.VK_SPACE];
 		shift = keys[KeyEvent.VK_SHIFT];
