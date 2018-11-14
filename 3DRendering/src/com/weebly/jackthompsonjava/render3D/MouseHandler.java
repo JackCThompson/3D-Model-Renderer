@@ -3,15 +3,12 @@ package com.weebly.jackthompsonjava.render3D;
 import java.awt.GraphicsDevice;
 import java.awt.Point;
 import java.awt.Robot;
-import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.image.BufferedImage;
 
 public class MouseHandler implements MouseListener, MouseMotionListener{
 
-	private Handler handler;
 	
 	private int centerX;
 	private int centerY;
@@ -24,7 +21,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
 	private Robot r;
 	
 	public MouseHandler(GraphicsDevice gd, Handler handler) {
-		this.handler = handler;
 		
 		try {
 			r = new Robot(gd);
@@ -36,9 +32,9 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
 		centerY = handler.getProgram().getHeight() / 2;
 		
 		centerXOnScreen = centerX + (int) handler.getDisplay().getJFrame().getLocationOnScreen().getX();
-		centerYOnScreen = centerY + (int) handler.getDisplay().getJFrame().getLocationOnScreen().getX();
+		centerYOnScreen = centerY + (int) handler.getDisplay().getJFrame().getLocationOnScreen().getY();
 		
-		handler.getDisplay().getJFrame().getContentPane().setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB), new Point(0, 0), "blank cursor"));
+		//handler.getDisplay().getJFrame().getContentPane().setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB), new Point(0, 0), "blank cursor"));
 		r.mouseMove(centerXOnScreen, centerYOnScreen);
 	}
 
@@ -67,7 +63,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
 	}
 	
 	public Point getMove() {
+		Point p = new Point(xMove, yMove);
 		r.mouseMove(centerXOnScreen, centerYOnScreen);
-		return new Point(xMove, yMove);
+		return p;
 	}
 }

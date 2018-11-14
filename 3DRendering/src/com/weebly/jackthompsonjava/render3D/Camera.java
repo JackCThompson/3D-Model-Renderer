@@ -35,7 +35,7 @@ public class Camera {
 		
 		setFovX(1.22);
 		
-		speed = 0.1;
+		speed = 0.4;
 		
 	}
 	

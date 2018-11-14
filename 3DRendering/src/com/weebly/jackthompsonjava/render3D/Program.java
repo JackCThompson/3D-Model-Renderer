@@ -3,7 +3,6 @@ package com.weebly.jackthompsonjava.render3D;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Program implements Runnable{
@@ -15,7 +14,7 @@ public class Program implements Runnable{
 	
 	private Display display;
 	private BufferStrategy bs;
-	private BufferedImage scene3D;
+//	private BufferedImage scene3D;
 	private Graphics2D g;
 	
 	private Handler handler;
@@ -46,7 +45,7 @@ public class Program implements Runnable{
 		double timePerTick = 1000000000 / fps;
 		double delta = 0;
 		long lastTime = System.nanoTime();
-		
+
 		long timer = 0;
 		int ticks = 0;
 		int frames = 0;
@@ -98,7 +97,7 @@ public class Program implements Runnable{
 		display.getJFrame().addKeyListener(keyHandler);
 		
 		models = new ArrayList<Model3D>();
-		models.add(new Model3D("res/models/cube.txt", handler));
+		models.add(new Model3D("res/models/square-tube.txt", handler));
 	}
 
 	private void tick() {

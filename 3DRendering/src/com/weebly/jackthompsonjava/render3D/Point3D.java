@@ -62,9 +62,16 @@ public class Point3D {
 		if (rotatedZ2 < 0) {
 			visible = false;
 		}
-		perspectiveX = (int) ((0.5 + rotatedX1 / (handler.getCamera().getFovX() * distanceToCamera * 0.5)) * handler.getProgram().getWidth());
-		perspectiveY = (int) ((0.5 + rotatedY2 / (handler.getCamera().getFovY() * distanceToCamera * 0.5)) * handler.getProgram().getHeight());
 		
+		
+		
+		if (visible) {
+			perspectiveX = (int) ((0.5 + rotatedX1 / (handler.getCamera().getFovX() * distanceToCamera * 0.5)) * handler.getProgram().getWidth());
+			perspectiveY = (int) ((0.5 + rotatedY2 / (handler.getCamera().getFovY() * distanceToCamera * 0.5)) * handler.getProgram().getHeight());
+		} else {
+			perspectiveX = (int) ((0.5 + rotatedX1 / (handler.getCamera().getFovX() * distanceToCamera * 0.5)) * handler.getProgram().getWidth());
+			perspectiveY = (int) ((0.5 + rotatedY2 / (handler.getCamera().getFovY() * distanceToCamera * 0.5)) * handler.getProgram().getHeight());
+		}
 		perspectiveY = handler.getProgram().getHeight() - perspectiveY;
 	}
 
